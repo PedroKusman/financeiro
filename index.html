@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembrete Financeiro</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            min-height: 100vh; 
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            background-size: contain;
+            background-attachment: fixed; 
+            transition: background-image 1s ease-in-out;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 90%; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0); 
+        }
+
+        p {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .data-atual {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lembrete Financeiro 🤑</h1>
+        <h2>🤍 Meu amor 🤍</h2>
+        <p>Tire alguns minutos do seu dia, para atualizar sua planilha!!</p>
+        <p>essa mensagem sera disparada toda sexta-feira</p>
+        <p class="data-atual" id="dataAtual"></p>
+        <a href="file:///C:/caminho/para/sua/planilha.xlsx" class="btn">Abrir Planilha</a>
+    </div>
+
+    <script>
+               
+               const imagens = [
+    'https://drive.google.com/uc?export=view&id=1nSKQCrS3ksPNXcOMCkFCMWya39GIs5Em',
+    // Adicione outras imagens, se necessário
+];
+
+        
+        const coresTexto = [
+            '#FF7F50', 
+            '#FFA07A', 
+            '#FF6347', 
+            '#FF4500'  
+        ];
+
+        let indiceImagem = 0;
+
+        
+        function trocarImagemFundo() {
+            document.body.style.backgroundImage = `url('${imagens[indiceImagem]}')`;  
+            document.querySelector('.container').style.color = coresTexto[indiceImagem]; 
+
+            indiceImagem = (indiceImagem + 1) % imagens.length; 
+        }
+
+        
+        setInterval(trocarImagemFundo, 10000); 
+
+
+        
+        function formatarData() {
+            const hoje = new Date();
+            const dia = hoje.getDate().toString().padStart(2, '0');
+            const mes = (hoje.getMonth() + 1).toString().padStart(2, '0');
+            const ano = hoje.getFullYear();
+            return `${dia}/${mes}/${ano}`;
+        }
+
+        
+        document.getElementById('dataAtual').textContent = `Data de hoje: ${formatarData()}`;
+
+        
+        trocarImagemFundo();
+
+    </script>
+</body>
+</html>
